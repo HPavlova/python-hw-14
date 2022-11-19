@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block header %}
+<h1 class="content__title">Quotes</h1>
+{% endblock %} {% block content %}
+
+<div class="table__wrapper">
+  <h3 class="option__title">Filter</h3>
+  <form class="filter" method="post" action="{% url 'filter_by_author' %}">
+    <label class="filter__label"
+      >Author
+      <input
+        class="filter__input"
+        id="author_name"
+        name="author_name"
+        type="text"
+      />
+    </label>
+    <button class="filter__button button">Filter</button>
+  </form>
+  <table class="table">
+    <caption>
+      Quotes
+    </caption>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Quote</th>
+        <th>Author</th>
+        <th>Author-link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for q in quotes %}
+      <tr>
+        <td>{{q.id}}</td>
+        <td>{{q.text}}</td>
+        <td>{{q.author.name}}</td>
+        <td>{{q.author}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
