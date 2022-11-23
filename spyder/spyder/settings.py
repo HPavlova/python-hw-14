@@ -12,6 +12,7 @@ BOT_NAME = 'spyder'
 SPIDER_MODULES = ['spyder.spiders']
 NEWSPIDER_MODULE = 'spyder.spiders'
 
+FEED_EXPORT_ENCODING = "utf-8"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'spyder (+http://www.yourdomain.com)'
@@ -62,9 +63,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'spyder.pipelines.SpyderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'spyder.pipelines.SpyderPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
