@@ -2,11 +2,10 @@ from django.db import models
 
 # Create your models here.
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey, Table
+from .db_config import Base, engine
 
-Base = declarative_base()
 
 quotes_to_author = Table(
     'quotes_to_author',
@@ -31,3 +30,6 @@ class Author(Base):
     author_link = Column(String(250), unique=True)
     quotes = relationship(
         'Quotes', secondary=quotes_to_author, back_populates='author')
+
+
+Base.metadata.create_all(bind=engine)
